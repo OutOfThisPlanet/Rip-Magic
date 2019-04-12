@@ -1,2 +1,2 @@
 # Rip-Magic
-PowerShell script to download all Magic cards from the excellent scryfall site
+PowerShell script to download all Magic sample cards from the excellent scryfall site
