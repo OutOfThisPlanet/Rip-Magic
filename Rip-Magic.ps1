@@ -45,7 +45,7 @@ foreach ($Magic in $TheGathering)
         $Reserved = ""
     }
     
-    $Filename = ($DownloadPath) + "\" + "$($Magic.name)-$($Magic.set_name)-$(((($Magic.released_at) -split "-")[0]))-$($Rarity)$($Reserved).jpg"
+    $Filename = ($DownloadPath) + "\" + "$(($Magic.name.replace("//","''")))-$($Magic.set_name)-$(((($Magic.released_at) -split "-")[0]))-$($Rarity)$($Reserved).jpg"
 
     try
     {
@@ -63,4 +63,8 @@ foreach ($Magic in $TheGathering)
         }
     }
 }
+
+
+
+
 
