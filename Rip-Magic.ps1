@@ -36,7 +36,7 @@ foreach ($Magic in $TheGathering)
     {
         $Rarity = "Common"
     }
-    if ($Magic.reserved -eq $false)
+    if ($Magic.reserved -eq "True")
     {
         $Reserved = "-RESERVED"
     }
