@@ -48,13 +48,13 @@ foreach ($Magic in $TheGathering)
 
     try
     {
-        Start-BitsTransfer -Source $Link -Destination $Filename
+        (New-Object System.Net.WebClient).DownloadFile($Link, $FileName)
     }
     catch
     {
         try
         {
-            (New-Object System.Net.WebClient).DownloadFile($Link, $FileName)
+            Start-BitsTransfer -Source $Link -Destination $Filename
         }
         catch
         {
