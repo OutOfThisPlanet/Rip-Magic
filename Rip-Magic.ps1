@@ -7,10 +7,7 @@ $TheGathering = $ConvertedJson |
     Select-Object name, set_name, released_at, reserved, image_uris, rarity
 
 foreach ($Magic in $TheGathering)
-{
-    Write-Host "Downloading " -ForegroundColor Green -BackgroundColor Black -NoNewline
-    write-host $Magic.name -ForegroundColor Red -BackgroundColor Black
-    
+{  
     if ($DownloadPath.EndsWith("\"))
     {
         $DownloadPath = $DownloadPath.TrimEnd("\")
@@ -41,6 +38,11 @@ foreach ($Magic in $TheGathering)
     {
         $Reserved = ""
     }
+
+    Write-Host "Downloading " -ForegroundColor Green -BackgroundColor Black -NoNewline
+    write-host $Magic.name " "  -ForegroundColor Red -BackgroundColor Black -NoNewline
+    Write-Host $Rarity " " -ForegroundColor Yellow -BackgroundColor Black -NoNewline
+    Write-Host $Reserved -ForegroundColor Cyan -BackgroundColor Black
     
     $FilenameFix = $Magic.name.Split([IO.Path]::GetInvalidFileNameChars()) -join ''
 
@@ -52,13 +54,6 @@ foreach ($Magic in $TheGathering)
     }
     catch
     {
-        try
-        {
-            Start-BitsTransfer -Source $Link -Destination $Filename
-        }
-        catch
-        {
-            Invoke-WebRequest -Uri $Link -OutFile $Filename
-        }
+        Start-BitsTransfer -Source $Link -Destination $Filename
     }
 }
