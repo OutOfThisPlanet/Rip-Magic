@@ -3,11 +3,8 @@ $Json = Invoke-WebRequest -Uri "https://archive.scryfall.com/json/scryfall-defau
 $ConvertedJson = ConvertFrom-Json -InputObject $Json 
 
 $TheGathering = $ConvertedJson | 
-    where {$_.name -ne $null `
-        -and $_.image_uris -ne $null `
-        -and $_.object -eq "card" `
-        -and $_.lang -eq "en"} | 
-   Select-Object name, set_name, released_at, reserved, image_uris 
+    where {$_.name -ne $null -and $_.image_uris -ne $null -and $_.object -eq "card" -and $_.lang -eq "en"} | 
+    Select-Object name, set_name, released_at, reserved, image_uris, rarity
 
 foreach ($Magic in $TheGathering)
 {
@@ -49,17 +46,17 @@ foreach ($Magic in $TheGathering)
 
     try
     {
-        (New-Object System.Net.WebClient).DownloadFile($Link, $FileName)
+        Start-BitsTransfer -Source $Link -Destination $Filename
     }
     catch
     {
         try
         {
-            Invoke-WebRequest -Uri $Link -OutFile $Filename
+            (New-Object System.Net.WebClient).DownloadFile($Link, $FileName)
         }
         catch
         {
-            Start-BitsTransfer -Source $Link -Destination $Filename
+            Invoke-WebRequest -Uri $Link -OutFile $Filename
         }
     }
 }
