@@ -44,7 +44,7 @@ foreach ($Magic in $TheGathering)
     
     $FilenameFix = $Magic.name.Split([IO.Path]::GetInvalidFileNameChars()) -join ''
 
-    $Filename = ($DownloadPath) + "\" + "$(($FilenameFix))-$($Magic.set_name)-$(((($Magic.released_at) -split "-")[0]))-$($Rarity)$($Reserved).jpg"
+    $Filename = ($DownloadPath) + "\" + "$($FilenameFix)-$($Magic.set_name)-$(((($Magic.released_at) -split "-")[0]))-$($Rarity)$($Reserved).jpg"
 
     try
     {
