@@ -69,7 +69,7 @@ foreach ($Magic in $TheGathering)
         {
             try
             {
-                Start-BitsTransfer -Source $Link -Destination $Filename
+                Start-BitsTransfer -Source $Link -Destination $Filename -ErrorAction Stop
             }
             catch
             {
