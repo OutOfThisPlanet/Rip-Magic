@@ -181,9 +181,9 @@ Function Rip-MagicTheGathering
     $MainMenu = Read-Host "What do you want to download?"
     Switch ($MainMenu)
     {
-	    1 {$MainChoice = "Everything"}
-	    2 {$MainChoice = "Set"}
-	    3 {$MainChoice = "Rarity"}
+    	1 {$MainChoice = "Everything"}
+    	2 {$MainChoice = "Set"}
+    	3 {$MainChoice = "Rarity"}
         4 {$MainChoice = "Year"}
         5 {$MainChoice = "Colour"}
         6 {$MainChoice = "Reserved"}
@@ -235,9 +235,9 @@ Function Rip-MagicTheGathering
 
         Switch ($RarityMenu)
         {
-	        1 {$RarityChoice = "Common"}
-	        2 {$RarityChoice = "Uncommon"}
-	        3 {$RarityChoice = "Rare"}
+	    1 {$RarityChoice = "Common"}
+	    2 {$RarityChoice = "Uncommon"}
+	    3 {$RarityChoice = "Rare"}
             4 {$RarityChoice = "Mythic"}
         }
 
@@ -291,9 +291,9 @@ Function Rip-MagicTheGathering
 
         Switch ($ColourMenu)
         {
-	        1 {$ColourChoice = "W"}
-	        2 {$ColourChoice = "U"}
-	        3 {$ColourChoice = "B"}
+	    1 {$ColourChoice = "W"}
+	    2 {$ColourChoice = "U"}
+	    3 {$ColourChoice = "B"}
             4 {$ColourChoice = "R"}
             5 {$ColourChoice = "G"}
         }
