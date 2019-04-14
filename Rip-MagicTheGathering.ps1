@@ -72,6 +72,24 @@ Function Rip-MagicTheGathering
                 $ImageSize = "large"
             }
 
+            if ($Magic.collector_number)
+            {
+                $CollectorNumber = $Magic.collector_number
+            }
+            else
+            {
+                $CollectorNumber = "NoCollectorNumber"
+            }
+            
+            if ($Magic.edhrec_rank)
+            {
+                $EDHRECRank = $Magic.edhrec_rank
+            }
+            else
+            {
+                $EDHRECRank = "NoRank"
+            }
+
             $Link = ($Magic | Select-Object -ExpandProperty image_uris | select $ImageSize).$ImageSize
             $FileNameFix = $Magic.name.Split([IO.Path]::GetInvalidFileNameChars()) -join ''
             $SetNameFix = $Magic.set_name.Split([IO.Path]::GetInvalidFileNameChars()) -join ''
@@ -82,7 +100,7 @@ Function Rip-MagicTheGathering
                 New-Item -Path "$($DownloadPath)\$($PathStructure)" -ItemType Directory | Out-Null
             }
             $FolderName = "\" + $PathStructure
-            $Filename = ($DownloadPath) + $FolderName + "$($FileNameFix)-$($SetNameFix)-$($Year)-$($Rarity)-$($Magic.tcgplayer_id)-$($Magic.color)$($Reserved).jpg"
+            $Filename = ($DownloadPath) + $FolderName + "$($FileNameFix)-$($SetNameFix)-$($Year)-$($Rarity)-$($CollectorNumber)-$($EDHRECRank)-$($Magic.tcgplayer_id)-$($Magic.color)$($Reserved).jpg"
 
             if (!(Test-Path $Filename))
             {
@@ -99,6 +117,7 @@ Function Rip-MagicTheGathering
                 }
                 catch
                 {
+                    w$Filename
                     Start-BitsTransfer -Source $Link -Destination $Filename -ErrorAction Stop
 
                 }
