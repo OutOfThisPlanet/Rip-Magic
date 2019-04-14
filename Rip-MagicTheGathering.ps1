@@ -82,7 +82,7 @@ Function Rip-MagicTheGathering
                 New-Item -Path "$($DownloadPath)\$($PathStructure)" -ItemType Directory | Out-Null
             }
             $FolderName = "\" + $PathStructure
-            $Filename = ($DownloadPath) + $FolderName + "$($FileNameFix)-$($SetNameFix)-$($Year)-$($Rarity)-$($Magic.collector_number)-$($Magic.edhrec_rank)-$($Magic.tcgplayer_id)-$($Magic.color)$($Reserved).jpg"
+            $Filename = ($DownloadPath) + $FolderName + "$($FileNameFix)-$($SetNameFix)-$($Year)-$($Rarity)-$($Magic.tcgplayer_id)-$($Magic.color)$($Reserved).jpg"
 
             if (!(Test-Path $Filename))
             {
