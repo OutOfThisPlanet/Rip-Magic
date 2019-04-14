@@ -71,16 +71,7 @@ Function Rip-MagicTheGathering
             {
                 $ImageSize = "large"
             }
-
-            if ($Magic.collector_number)
-            {
-                $CollectorNumber = $Magic.collector_number
-            }
-            else
-            {
-                $CollectorNumber = "NoCollectorNumber"
-            }
-            
+           
             if ($Magic.edhrec_rank)
             {
                 $EDHRECRank = $Magic.edhrec_rank
@@ -100,7 +91,7 @@ Function Rip-MagicTheGathering
                 New-Item -Path "$($DownloadPath)\$($PathStructure)" -ItemType Directory | Out-Null
             }
             $FolderName = "\" + $PathStructure
-            $Filename = ($DownloadPath) + $FolderName + "$($FileNameFix)-$($SetNameFix)-$($Year)-$($Rarity)-$($CollectorNumber)-$($EDHRECRank)-$($Magic.tcgplayer_id)-$($Magic.color)$($Reserved).jpg"
+            $Filename = ($DownloadPath) + $FolderName + "$($FileNameFix)-$($SetNameFix)-$($Year)-$($Rarity)-$($Magic.tcgplayer_id)-$($Colour)$($Reserved).jpg"
 
             if (!(Test-Path $Filename))
             {
@@ -158,7 +149,6 @@ Function Rip-MagicTheGathering
             tcgplayer_id
 
     Write-Host "What image size do you want?" -ForegroundColor Red -BackgroundColor Black
-
     Write-Host "Choose" -ForegroundColor Red -BackgroundColor Black
     Write-Host ""
     Write-Host '"1 - Small"' -ForegroundColor Yellow -BackgroundColor Black
