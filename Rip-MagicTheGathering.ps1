@@ -117,7 +117,7 @@ Function Rip-MagicTheGathering
                 }
                 catch
                 {
-                    w$Filename
+                    $Filename
                     Start-BitsTransfer -Source $Link -Destination $Filename -ErrorAction Stop
 
                 }
