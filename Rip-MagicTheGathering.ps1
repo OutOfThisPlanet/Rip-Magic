@@ -304,7 +304,7 @@ Function Rip-MagicTheGathering
             Write-Host "That was not a valid choice" 
             return;
         }
-        Download-Magic -TheGathering ($TheGathering | where {$_.color -eq $ColourChoice}) -DownloadPath $DownloadPath -ImageSize $ImageSize
+        Download-Magic -TheGathering ($TheGathering | where {$_.colors -eq $ColourChoice}) -DownloadPath $DownloadPath -ImageSize $ImageSize
     }
 
     if ($MainChoice -eq "Reserved")
